@@ -263,7 +263,7 @@ test('handles a bad revision for "changedSince", for git', async () => {
 test('gets changed files for hg', async () => {
   if (process.env.CI) {
     // Circle and Travis have very old version of hg (v2, and current
-    // version is v4.2) and its API changed since then and not compatible
+    // version is v5) and its API changed since then and not compatible
     // any more. Changing the SCM version on CIs is not trivial, so we'll just
     // skip this test and run it only locally.
     return;
