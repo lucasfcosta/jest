@@ -1132,6 +1132,24 @@ describe('moduleMocker', () => {
       expect(spy1.mock.calls.length).toBe(1);
       expect(spy2.mock.calls.length).toBe(1);
     });
+
+    it('can mock non-writable but configurable function properties', () => {
+      const obj = {fn: () => 'original'};
+
+      const descriptor = {
+        configurable: true,
+        value: () => 'abc',
+        writable: false,
+      };
+
+      Object.defineProperty(obj, 'fn', descriptor);
+
+      moduleMocker.spyOn(obj, 'fn').mockReturnValue('def');
+      expect(obj.fn()).toBe('def');
+
+      moduleMocker.restoreAllMocks();
+      expect(Object.getOwnPropertyDescriptor(obj, 'fn')).toEqual(descriptor);
+    });
   });
 
   describe('spyOnProperty', () => {
