@@ -99,7 +99,8 @@
     "test-leak": "yarn jest -i --detectLeaks jest-mock jest-diff jest-repl",
     "test": "yarn lint && yarn jest",
     "watch": "yarn build && node ./scripts/watch.js",
-    "watch:ts": "yarn build:ts --watch"
+    "watch:ts": "yarn build:ts --watch",
+    "repro": "yarn jest e2e/__tests__/beforeAllAbortsTests.test.ts"
   },
   "workspaces": {
     "packages": [
